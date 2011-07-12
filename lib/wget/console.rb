@@ -6,9 +6,9 @@ module Wget
 
     def run
       res = Request.new(@option).call
-      STDOUT.puts(res.readlines)
+      STDOUT.puts(res.body)
       open(@option.filename, 'w') do |file|
-        file.puts res.readlines
+        file.puts res.body
       end
     end
 

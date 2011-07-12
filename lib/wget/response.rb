@@ -4,8 +4,8 @@ module Wget
       @response = res
     end
 
-    def readlines
-      @buf ||= @response.readlines
+    def body
+      @response.read_body
     end
   end
 end
