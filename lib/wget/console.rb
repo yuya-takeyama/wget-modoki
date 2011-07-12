@@ -1,3 +1,5 @@
+require 'date'
+
 module Wget
   class Console
     def initialize(option)
@@ -10,6 +12,7 @@ module Wget
       open(@option.filename, 'w') do |file|
         file.puts res.body
       end
+      @logger.log("#{DateTime.now.to_s}\t#{@option.url}")
     end
 
     def logger=(logger)

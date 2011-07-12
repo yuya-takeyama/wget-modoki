@@ -11,4 +11,5 @@ include Wget
 option = Option.new
 option.argv = ARGV
 wget = Console.new(option)
+wget.logger = Logger.new("#{WGET_MODOKI_ROOT_PATH}/log/wget.log")
 wget.run
