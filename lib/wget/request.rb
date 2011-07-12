@@ -8,9 +8,14 @@ module Wget
     end
 
     def fetch(url, limit = 10)
-      p url
       url = URI.parse(url)
-      req = Net::HTTP::Get.new(url.path)
+      if url.query
+        path = "#{url.path}?#{url.query}"
+      else
+        path = url.path
+      end
+      req = Net::HTTP::Get.new(path)
+
       req.initialize_http_header("User-Agent" => @option.user_agent) if @option.has_user_agent?
       req.basic_auth(@option.user, @option.password) if @option.has_user? and @option.has_password?
 
