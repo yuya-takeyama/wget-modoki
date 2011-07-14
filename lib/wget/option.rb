@@ -6,6 +6,7 @@ module Wget
       [:user_agent, 'user-agent', 'u'],
       [:password, 'passowrd'],
       [:user, 'user'],
+      [:output_document, 'output-document', 'O']
     ]
 
     def initialize(options = {})
@@ -58,7 +59,11 @@ module Wget
     end
 
     def filename
-      @options[:url][%r{[^/]+?$}] || 'index.html'
+      if has_output_document?
+        output_document
+      else
+        @options[:url][%r{[^/]+?$}] || 'index.html'
+      end
     end
   end
 end

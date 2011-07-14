@@ -64,5 +64,33 @@ module Wget
       let(:url) { "http://example.com/foo.html" }
       it { should == 'foo.html' }
     end
+
+    context 'has "-O" "foo/bar.html" as arguments' do
+      let(:argv) { [url, "-O", filename] }
+      let(:filename) { 'foo/bar.html' }
+      context 'url = "http://example.com/"' do
+        let(:url) { 'http://example.com/' }
+        it { should == filename }
+      end
+
+      context 'url = "http://example.com/foo.html"' do
+        let(:url) { 'http://example.com/foo.html' }
+        it { should == filename }
+      end
+    end
+
+    context 'has "--output-document" "foo/bar.html" as arguments' do
+      let(:argv) { [url, "--output-document", filename] }
+      let(:filename) { 'foo/bar.html' }
+      context 'url = "http://example.com/"' do
+        let(:url) { 'http://example.com/' }
+        it { should == filename }
+      end
+
+      context 'url = "http://example.com/foo.html"' do
+        let(:url) { 'http://example.com/foo.html' }
+        it { should == filename }
+      end
+    end
   end
 end
