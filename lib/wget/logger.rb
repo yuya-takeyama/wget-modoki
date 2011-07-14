@@ -1,7 +1,7 @@
 module Wget
   class Logger
     def initialize(file)
-      @file = open(file, "w")
+      @file = open(file, "a")
     end
 
     def log(line)
