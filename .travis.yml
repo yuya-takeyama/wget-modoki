@@ -1,0 +1,11 @@
+rvm:
+  - 1.9.3
+  - 1.9.2
+  - 1.8.7
+
+branches:
+  only:
+    - master
+    - develop
+
+script: bundle exec rspec

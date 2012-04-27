@@ -5,4 +5,5 @@ require 'wget/response'
 require 'wget/logger'
 
 module Wget
+  VERSION = '0.0.0'
 end
